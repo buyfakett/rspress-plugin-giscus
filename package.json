@@ -1,6 +1,6 @@
 {
   "name": "rspress-plugin-giscus",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Rspress plugin to add Giscus comments",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,10 +12,10 @@
   ],
   "author": "buyfakett",
   "license": "MIT",
-  "bugs": "https://github.com/buyfakett/rspress-plugin-code/issues",
+  "bugs": "https://github.com/buyfakett/rspress-plugin-giscus/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/buyfakett/rspress-plugin-code"
+    "url": "https://github.com/buyfakett/rspress-plugin-giscus"
   },
   "scripts": {
     "build": "tsc",

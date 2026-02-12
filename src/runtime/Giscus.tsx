@@ -33,7 +33,8 @@ export default function GiscusWidget(props: GiscusProps) {
         emitMetadata: '0',
         inputPosition: 'bottom',
         lang: 'zh-CN',
-        loading: 'lazy',
+        loading: 'eager',
+        theme: isDark ? 'noborder_dark' : 'light',
     };
 
     const finalProps = { ...defaultProps, ...props } as GiscusProps;
@@ -42,7 +43,6 @@ export default function GiscusWidget(props: GiscusProps) {
         <div className="rspress-giscus-wrapper" style={{ margin: '2rem 0' }} data-theme={isDark ? 'dark' : 'light'}>
             <Giscus
                 {...finalProps}
-                theme={isDark ? 'noborder_dark' : 'light'}
             />
         </div>
     );

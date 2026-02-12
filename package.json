@@ -1,6 +1,6 @@
 {
   "name": "rspress-plugin-giscus",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Rspress plugin to add Giscus comments",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

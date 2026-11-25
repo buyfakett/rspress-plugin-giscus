@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from 'react';
 import Giscus, { GiscusProps } from '@giscus/react';
+import { getLightTheme } from './lightTheme';
 
 function getThemeFromDOM(): boolean {
     if (typeof document === 'undefined') return false;
@@ -22,7 +23,11 @@ function subscribeToTheme(callback: () => void): () => void {
 }
 
 export default function GiscusWidget(props: GiscusProps) {
-    const isDark = useSyncExternalStore(subscribeToTheme, getThemeFromDOM, () => false);
+    const siteTheme = useSyncExternalStore(
+        subscribeToTheme,
+        () => getThemeFromDOM() ? 'noborder_dark' : getLightTheme(props.host),
+        () => 'light',
+    );
 
     if (!props.repo) return null;
 
@@ -34,13 +39,12 @@ export default function GiscusWidget(props: GiscusProps) {
         inputPosition: 'bottom',
         lang: 'zh-CN',
         loading: 'eager',
-        theme: isDark ? 'noborder_dark' : 'light',
     };
 
-    const finalProps = { ...defaultProps, ...props } as GiscusProps;
+    const finalProps = { ...defaultProps, ...props, theme: props.theme ?? siteTheme } as GiscusProps;
 
     return (
-        <div className="rspress-giscus-wrapper" style={{ margin: '2rem 0' }} data-theme={isDark ? 'dark' : 'light'}>
+        <div className="rspress-giscus-wrapper" style={{ margin: '2rem 0' }} data-theme={siteTheme === 'noborder_dark' ? 'dark' : 'light'}>
             <Giscus
                 {...finalProps}
             />
